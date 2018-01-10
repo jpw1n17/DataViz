@@ -1,0 +1,753 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- You need these lines if you ARE using a Node server -->
+    <title>Currancy Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="static/d3.js"></script>
+    <script type="text/javascript" src="static/d3.csv.js"></script>
+
+
+    <!--
+    <script src="../static/results.js"></script>
+    <script type="text/javascript" src="static/d3.js"></script>
+   
+    -->
+</head>
+
+<link type="text/css" rel="stylesheet" href="static/style.css">
+<style type="text/css">
+    svg {
+        font-size: 14px;
+    }
+    
+    .axis {
+        shape-rendering: crispEdges;
+    }
+    
+    .axis line {
+        stroke: #ddd;
+        stroke-width: .5px;
+    }
+    
+    .axis path {
+        display: none;
+    }
+    
+    rect.extent {
+        fill: #000;
+        fill-opacity: .125;
+        stroke: #fff;
+    }
+    
+    rect.frame {
+        fill: #fff;
+        fill-opacity: .7;
+        stroke: #aaa;
+    }
+    
+    circle {
+        fill: #ccc;
+        fill-opacity: .5;
+    }
+    
+    .legend circle {
+        fill-opacity: 1;
+    }
+    
+    .legend text {
+        font-size: 18px;
+        font-style: oblique;
+    }
+    
+    .cell text {
+        pointer-events: none;
+    }
+    
+    body {
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
+        overflow: auto;
+        padding: 5;
+        margin: 5;
+        border: 5;
+    }
+    
+    .Year-1999 {
+        fill: #FE0808;
+    }
+    
+    .Year-2000 {
+        fill: #FE0873;
+    }
+    
+    .Year-2001 {
+        fill: #FE08A4;
+    }
+    
+    .Year-2002 {
+        fill: #F608FE;
+    }
+    
+    .Year-2003 {
+        fill: #9C08FE;
+    }
+    
+    .Year-2004 {
+        fill: #4108FE;
+    }
+    
+    .Year-2005 {
+        fill: #0862FE;
+    }
+    
+    .Year-2006 {
+        fill: #08A4FE;
+    }
+    
+    .Year-2007 {
+        fill: #08A4FE;
+    }
+    
+    .Year-2008 {
+        fill: #08F6FE;
+    }
+    
+    .Year-2009 {
+        fill: #08FEAC;
+    }
+    
+    .Year-2010 {
+        fill: #08FE5A;
+    }
+    
+    .Year-2011 {
+        fill: #10FE08;
+    }
+    
+    .Year-2012 {
+        fill: #7BFE08;
+    }
+    
+    .Year-2013 {
+        fill: #F6FE08;
+    }
+    
+    .Year-2014 {
+        fill: #FECD08;
+    }
+    
+    .Year-2015 {
+        fill: #FE9C08;
+    }
+    
+    .Year-2016 {
+        fill: #FE5A08;
+    }
+</style>
+
+<body>
+    <script>
+        var missing = {};
+
+        var g_indicators = [
+            "population",
+            "employment",
+            "import",
+            "export",
+            "foreigntrade",
+            "GDP",
+            "InflationGDPdeflator",
+            "Inflationconsumerprices",
+            "interestrate"
+        ];
+
+        function findStrongestCor() {
+            d3.csv("static/matrixFormatted.csv", function(exdata) {
+                d3.csv("static/all_data.csv", function(data) {
+                    curCodes = ["ARS", "AUD", "BRL", "CAD", "CNY", "EUR", "GBP", "IDR", "INR", "JPY", "KRW", "MXN", "RUB", "SAR", "TRY", "USD", "ZAR"]
+                    allCor = {};
+                    for (var sel1 of curCodes) {
+                        for (var sel2 of curCodes) {
+                            if (sel1 === sel2) continue;
+
+                            var targetLabel = sel1 + "-" + sel2;
+                            // console.log(targetLabel);
+                            var targetEx = aggregateExchangeDataForTarget(exdata, sel1, sel2);
+                            var graphData = [];
+                            var years = [];
+                            var cor = calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, graphData, years);
+                            for (var iL in cor) {
+                                var label = targetLabel + "_" + iL;
+                                allCor[label] = cor[iL];
+                            }
+                        }
+                    }
+                    let avgCorInd = {};
+                    aggregateIndictorCor(allCor, avgCorInd);
+                    printCor("Indicator with the Strongest Correlation", avgCorInd);
+
+                    // debug logging
+                    if (Object.keys(missing).length > 0) {
+                        console.log("missing columns");
+                        console.log(missing);
+                    }
+                    //console.log(allCor);
+
+                    var sortedCorkeys = Object.keys(allCor).sort(function(key1, key2) {
+                        // looking for the value that is closest to eith 1 or -1
+                        // there for take the abs subtrack from 1 and find value cloest to 0
+                        let v1 = 1.0 - Math.abs(allCor[key1]);
+                        let v2 = 1.0 - Math.abs(allCor[key2]);
+
+                        // we want reverse order (i.e. strongest orelation first)
+                        // return a positive value if v1 is greater than v2
+                        return v1 - v2;
+                    });
+
+                    $("#print-panel").append("<p>Overall Strongest correlations</p>");
+
+                    // print list to page
+                    for (i = 0; i < sortedCorkeys.length; i++) {
+                        var key = sortedCorkeys[i];
+                        var label = prretyLabel(key) + " = " + allCor[key].toFixed(2);
+                        var node = document.createElement("LI");
+                        var textnode = document.createTextNode(label);
+                        node.appendChild(textnode);
+                        document.getElementById("print-panel").appendChild(node);
+                    }
+                });
+            });
+        }
+
+        function printCor(title, cor) {
+            let sortedCorkeys = Object.keys(cor).sort(function(key1, key2) {
+                return Math.abs(cor[key1]) < Math.abs(cor[key2]);
+            });
+
+            // print title
+            $("#print-panel").append("<p>" + title + "</p>");
+
+            //print list
+            for (i = 0; i < sortedCorkeys.length; i++) {
+                var key = sortedCorkeys[i];
+                var label = convertIndicatorLabel(key) + " = " + (+cor[key]).toFixed(2);
+                var node = document.createElement("LI");
+                var textnode = document.createTextNode(label);
+                node.appendChild(textnode);
+                document.getElementById("print-panel").appendChild(node);
+            }
+        }
+
+        function aggregateIndictorCor(allCor, avgCorInd) {
+            // find the average correlation positive and negative cor for each indicator
+            let corIndSum = {};
+            let corIndCount = {};
+
+            // init sums and count
+            for (let i = 0; i < g_indicators.length; i++) {
+                let indCode = g_indicators[i];
+                corIndSum[indCode] = 0;
+                corIndCount[indCode] = 0;
+            }
+
+            for (let corKey in allCor) {
+                let val = allCor[corKey];
+                let countryInd = corKey.split("_")[1];
+                let indCode = countryInd.split("-")[1];
+
+                if (val === undefined || isNaN(val)) {
+                    console.log("skipping " + corKey + " with cor " + val)
+                } else {
+                    corIndSum[indCode] += Math.abs(+val);
+                    corIndCount[indCode] += 1;
+                }
+            }
+
+            for (let i = 0; i < g_indicators.length; i++) {
+                let indCode = g_indicators[i];
+                avgCorInd[indCode] = (+corIndSum[indCode]) / (+corIndCount[indCode]);
+            }
+        }
+
+        function convertIndicatorLabel(indCode) {
+            var indicatorsConverter = {
+                "population": "Population",
+                "employment": "Employment",
+                "import": "Imports",
+                "export": "Exoprts",
+                "foreigntrade": "Foreign Trade",
+                "GDP": "GDP",
+                "InflationGDPdeflator": "Inflation GDP Deflator",
+                "Inflationconsumerprices": "Inflation Consumer Prices",
+                "interestrate": "Interest Rate",
+            };
+            return indicatorsConverter[indCode];
+        }
+
+        function prretyLabel(codeLabel) {
+            var split1 = codeLabel.split("_");
+            var exLabel = split1[0];
+            var split2 = split1[1].split("-");
+            var curCode = split2[0];
+            var indCode = split2[1];
+
+
+
+            return exLabel + " with " + curCode + " " + convertIndicatorLabel(indCode);
+        }
+
+        function validateSelection(comp) {
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+            $('#goBtn').prop("disabled", sel1 === sel2);
+        }
+
+        function genOutput() {
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+
+            lowFreqVar(sel1, sel2);
+        }
+
+        function lowFreqVar(sel1, sel2) {
+            d3.csv("static/matrixFormatted.csv", function(exdata) {
+                var targetLabel = sel1 + "-" + sel2;
+                // aggregate data for target exchange rate
+                var targetEx = aggregateExchangeDataForTarget(exdata, sel1, sel2);
+
+                d3.csv("static/all_data.csv", function(data) {
+                    // normalise the data
+                    // normaliseLowFreqData(data);
+
+                    // calc corralation coeffient
+                    var graphData = [];
+                    var years = [];
+                    var cor = calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, graphData, years);
+
+                    // fine top 3 correlations
+                    var sortedCorkeys = Object.keys(cor).sort(function(key1, key2) {
+                        // looking for the value that is closest to eith 1 or -1
+                        // there for take the abs subtrack from 1 and find value cloest to 0
+                        let v1 = 1.0 - Math.abs(cor[key1]);
+                        let v2 = 1.0 - Math.abs(cor[key2]);
+
+                        // we want reverse order (i.e. strongest orelation first)
+                        // return a positive value if v1 is greater than v2
+                        return v1 - v2;
+                    });
+                    var top4CorVal = {};
+                    var top4CorLable = [];
+                    top4CorLable.push(targetLabel);
+                    top4CorVal[targetLabel] = 1.0;
+                    for (i = 0; i < 3; i++) {
+                        var label = sortedCorkeys[i];
+                        top4CorLable.push(label);
+                        top4CorVal[label] = cor[label];
+                    }
+
+                    // draw graph with top 3 corralations
+                    ScatterPlotGrid(graphData, top4CorLable, years, top4CorVal);
+
+                });
+            });
+        }
+
+        function ScatterPlotGrid(graphData, varSelection, years, top4CorVal) {
+
+            // Size parameters.
+            var size = 140,
+                padding = 10,
+                n = 4;
+
+            // Position scales.
+            var x = {},
+                y = {};
+            varSelection.forEach(function(varLabel) {
+                // Coerce values to numbers.
+                graphData.forEach(function(d) {
+                    d[varLabel] = +d[varLabel];
+                });
+
+                var value = function(d) {
+                        return d[varLabel];
+                    },
+                    domain = [d3.min(graphData, value), d3.max(graphData, value)],
+                    range = [padding / 2, size - padding / 2];
+                x[varLabel] = d3.scale.linear().domain(domain).range(range);
+                y[varLabel] = d3.scale.linear().domain(domain).range(range.reverse());
+            });
+
+            // Axes.
+            var axis = d3.svg.axis()
+                .ticks(5)
+                .tickSize(size * n);
+
+            // Brush.
+            var brush = d3.svg.brush()
+                .on("brushstart", brushstart)
+                .on("brush", brush)
+                .on("brushend", brushend);
+
+            // Root panel.
+            var svg = d3.select("#results-panel").append("svg:svg")
+                .attr("width", 1280)
+                .attr("height", 800)
+                .append("svg:g")
+                .attr("transform", "translate(140,20)");
+
+            // Legend.
+            var legend = svg.selectAll("g.legend")
+                .data(years)
+                .enter().append("svg:g")
+                .attr("class", "legend")
+                .attr("transform", function(d, i) {
+                    return "translate(-120," + (i * 20 + 100) + ")";
+                });
+
+            legend.append("svg:circle")
+                .attr("class", String)
+                .attr("r", 3);
+
+            legend.append("svg:text")
+                .attr("x", 12)
+                .attr("dy", ".31em")
+                .text(function(d) {
+                    return d;
+                });
+
+            // Cell and plot.
+            var cell = svg.selectAll("g.cell")
+                .data(cross(varSelection, varSelection))
+                .enter().append("svg:g")
+                .attr("class", "cell")
+                .attr("transform", function(d) {
+                    return "translate(" + d.i * size + "," + d.j * size + ")";
+                })
+                .each(plot);
+
+            // Titles for the diagonal.
+            cell.filter(function(d) {
+                    return d.i == d.j;
+                }).append("svg:text")
+                .attr("x", padding)
+                .attr("y", padding)
+                .attr("dy", ".71em")
+                .text(function(d) {
+                    var title = d.x + "\n" + top4CorVal[d.x].toFixed(2);
+                    return title;
+                });
+
+            function plot(p) {
+                var cell = d3.select(this);
+
+                // Plot frame.
+                cell.append("svg:rect")
+                    .attr("class", "frame")
+                    .attr("x", padding / 2)
+                    .attr("y", padding / 2)
+                    .attr("width", size - padding)
+                    .attr("height", size - padding);
+
+                // Plot dots.
+                cell.selectAll("circle")
+                    .data(graphData)
+                    .enter().append("svg:circle")
+                    .attr("class", function(d) {
+                        return d.Year;
+                    })
+                    .attr("cx", function(d) {
+                        return x[p.x](d[p.x]);
+                    })
+                    .attr("cy", function(d) {
+                        return y[p.y](d[p.y]);
+                    })
+                    .attr("r", 3);
+
+                // Plot brush.
+                cell.call(brush.x(x[p.x]).y(y[p.y]));
+            }
+
+            // Clear the previously-active brush, if any.
+            function brushstart(p) {
+                if (brush.data !== p) {
+                    cell.call(brush.clear());
+                    brush.x(x[p.x]).y(y[p.y]).data = p;
+                }
+            }
+
+            // Highlight the selected circles.
+            function brush(p) {
+                var e = brush.extent();
+                svg.selectAll(".cell circle").attr("class", function(d) {
+                    return e[0][0] <= d[p.x] && d[p.x] <= e[1][0] &&
+                        e[0][1] <= d[p.y] && d[p.y] <= e[1][1] ?
+                        d.Year : null;
+                });
+            }
+
+            // If the brush is empty, select all circles.
+            function brushend() {
+                if (brush.empty()) svg.selectAll(".cell circle").attr("class", function(d) {
+                    return d.Year;
+                });
+            }
+
+            function cross(a, b) {
+                var c = [],
+                    n = a.length,
+                    m = b.length,
+                    i, j;
+                for (i = -1; ++i < n;)
+                    for (j = -1; ++j < m;) c.push({
+                        x: a[i],
+                        i: i,
+                        y: b[j],
+                        j: j
+                    });
+                return c;
+            }
+        }
+
+
+        function normaliseLowFreqData(data) {
+            let max = {};
+            let min = {};
+            for (var row = 0; row < data.length; row++) {
+                rowData = data[row];
+                for (var col in rowData) {
+                    if (col === "Year") continue;
+
+                    if (rowData.hasOwnProperty(col)) {
+                        if (!max.hasOwnProperty(col) || (max[col] < rowData[col])) {
+                            max[col] = rowData[col];
+                        }
+
+                        if (!min.hasOwnProperty(col) || (min[col] > rowData[col])) {
+                            min[col] = rowData[col];
+                        }
+                    }
+                }
+            }
+
+            for (var row = 0; row < data.length; row++) {
+                rowData = data[row];
+                for (var col in rowData) {
+                    if (col === "Year") continue;
+
+                    if (rowData.hasOwnProperty(col)) {
+                        var range = max[col] - min[col];
+                        value = data[row][col];
+                        var nValue = (value - min[col]) / range;
+                        data[row][col] = nValue;
+                    }
+                }
+            }
+            console.log(data);
+        }
+
+        function fixIndianCurCode(curCode) {
+            return curCode === "INR" ? "IND" : curCode;
+        }
+
+        function aggregateExchangeDataForTarget(exd, sel1, sel2) {
+            let targetLabel = fixIndianCurCode(sel1) + "-" + fixIndianCurCode(sel2);
+            years = {};
+            counts = {};
+            for (var y = 1999; y <= 2016; y++) {
+                years[y] = 0.0;
+                counts[y] = 0;
+            }
+
+            for (row = 0; row < exd.length; row++) {
+                var sampleDate = new Date(exd[row]['Time']);
+                var value = exd[row][targetLabel];
+                var year = sampleDate.getFullYear();
+                if (years.hasOwnProperty(year)) {
+                    years[year] = years[year] + parseFloat(value);
+                    counts[year] = counts[year] + 1;
+                }
+            }
+
+            for (var y = 1999; y <= 2016; y++) {
+                years[y] = years[y] / counts[y];
+            }
+
+            return years;
+        }
+
+        function calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, dataOut, years) {
+            var indicatorLabels = [];
+            for (i = 0; i < g_indicators.length; i++) {
+                indicatorLabels.push(sel1 + "-" + g_indicators[i]);
+                indicatorLabels.push(sel2 + "-" + g_indicators[i]);
+            }
+
+            var xVals = [];
+            for (var y = 1999; y <= 2016; y++) {
+                years.push(y);
+                xVals.push(targetEx[y]);
+            }
+
+            var xIndex = 0;
+            var indicatorVals = [];
+            //extract data of interest
+
+            for (var dIndex = 0; dIndex < data.length; dIndex++) {
+                // skip till we find start of data we are interested in
+                var dYear = data[dIndex]['Year'];
+                if (dYear != years[xIndex]) {
+                    continue;
+                }
+
+                for (var i = 0; i < indicatorLabels.length; i++) {
+                    var iL = indicatorLabels[i];
+                    //create the arrays
+                    if (xIndex === 0) {
+                        indicatorVals.push([]);
+                    }
+                    var indicatorVal = +data[dIndex][iL];
+                    if (indicatorVal === NaN || indicatorVal === undefined) {
+                        //console.log(iL + " " + dYear);
+                        if (missing.hasOwnProperty(iL)) {
+                            missing[iL] += 1;
+                        } else {
+                            missing[iL] = 1;
+                        }
+                    }
+                    indicatorVals[i].push(indicatorVal);
+                }
+                xIndex++;
+            }
+
+            // compute corralation coefients
+            var cor = {};
+            for (var i = 0; i < indicatorVals.length; i++) {
+                cor[indicatorLabels[i]] = calcPearsonsCorrCoef(xVals, indicatorVals[i]);
+            }
+
+            // package data for output for graphing
+            for (let i = 0; i < xVals.length; i++) {
+                let row = {};
+                years[i] = "Year-" + years[i];
+                row['Year'] = years[i];
+
+                row[targetLabel] = xVals[i];
+                for (j = 0; j < indicatorVals.length; j++) {
+                    row[indicatorLabels[j]] = indicatorVals[j][i];
+                }
+                dataOut.push(row);
+            }
+
+            return cor;
+        }
+
+        // calc Pearsons corralation coefficient
+        //https://en.wikipedia.org/wiki/Pearson_correlation_coefficient
+        function calcPearsonsCorrCoef(xVals, yVals) {
+            var xMean = calcMean(xVals);
+            var yMean = calcMean(yVals);
+
+            var pcc1 = sumOfValMinusMeanProducts(xVals, xMean, yVals, yMean);
+            var pcc2 = sumOfVarMinusMeanSquaredSquarerooted(xVals, xMean);
+            var pcc3 = sumOfVarMinusMeanSquaredSquarerooted(yVals, yMean);
+
+            return pcc1 / (pcc2 * pcc3);
+        }
+
+        function calcMean(values) {
+            var sum = 0.0;
+            for (var i = 0; i < values.length; i++) {
+                sum += values[i];
+            }
+            return sum / values.length;
+        }
+
+        function sumOfVarMinusMeanSquaredSquarerooted(values, mean) {
+            var sumValMinusMeanSquared = 0.0;
+            for (let i = 0; i < values.length; i++) {
+                let valMinusMean = +values[i] - mean;
+                sumValMinusMeanSquared += (valMinusMean * valMinusMean);
+            }
+            return Math.sqrt(sumValMinusMeanSquared);
+        }
+
+        function sumOfValMinusMeanProducts(xVals, xMean, yVals, yMean) {
+            if (xVals.length != yVals.length) {
+                //error
+                return 0;
+            }
+
+            var sumOfProducts = 0.0;
+            for (i = 0; i < xVals.length; i++) {
+                sumOfProducts += (xVals[i] - xMean) * (yVals[i] - yMean);
+            }
+
+            return sumOfProducts;
+        }
+    </script>
+
+
+    <h1>G20 Currency Analysis</h1>
+    <h1>Economic Indicators</h1>
+    <a href="index.html">Exchange Rates</a>
+
+    <p><button id="findBtn" type="button" onclick=findStrongestCor()>Find Strongest Correlation!</button></p>
+    <p>
+        <div id="print-panel"></div>
+    </p>
+
+    <p>Please select two different currencys</p>
+    <p>
+        <select id="cur1" onchange=validateSelection(this)>
+            <option value="ARS">Argentina Peso</option>
+            <option value="AUD">Australia Dollar</option>
+            <option value="BRL">Brazil Real</option>
+            <option value="CAD">Canada Dollar</option>
+            <option value="CNY">China Yuan Renminbi</option>
+            <option value="EUR">Euro Member Countries</option>
+            <option value="GBP">United Kingdom Pound</option>
+            <option value="IDR">Indonesia Rupiah</option>
+            <option value="INR">India Rupee</option>
+            <option value="JPY">Japan Yen</option>
+            <option value="KRW">Korea (South) Won</option>
+            <option value="MXN">Mexico Peso</option>
+            <option value="RUB">Russia Ruble</option>
+            <option value="SAR">Saudi Arabia Riyal</option>
+            <option value="TRY">Turkey Lira</option>
+            <option value="USD">United States Dollar</option>
+            <option value="ZAR">South Africa Rand</option>
+        </select>
+
+        <select id="cur2" onchange=validateSelection(this)>
+            <option value="ARS">Argentina Peso</option>
+            <option value="AUD">Australia Dollar</option>
+            <option value="BRL">Brazil Real</option>
+            <option value="CAD">Canada Dollar</option>
+            <option value="CNY">China Yuan Renminbi</option>
+            <option value="EUR">Euro Member Countries</option>
+            <option value="GBP">United Kingdom Pound</option>
+            <option value="IDR">Indonesia Rupiah</option>
+            <option value="INR">India Rupee</option>
+            <option value="JPY">Japan Yen</option>
+            <option value="KRW">Korea (South) Won</option>
+            <option value="MXN">Mexico Peso</option>
+            <option value="RUB">Russia Ruble</option>
+            <option value="SAR">Saudi Arabia Riyal</option>
+            <option value="TRY">Turkey Lira</option>
+            <option value="USD">United States Dollar</option>
+            <option value="ZAR">South Africa Rand</option>
+        </select>
+
+        <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
+    </p>
+
+    <div id="results-panel"></div>
+
+    <div>
+        <h1>By Team Z</h1>
+    </div>
+</body>
