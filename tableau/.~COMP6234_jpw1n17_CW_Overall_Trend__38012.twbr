@@ -1,0 +1,2139 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10400.17.1206.1554                               -->
+<workbook source-build='10.4.2 (10400.17.1206.1554)' source-platform='mac' version='10.4' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location id='COMP6234_jpw1n17_CW_2015_Economic_Trend' path='/workbooks' revision='3.9' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='proc (economic2015)' inline='true' name='federated.1alhzl11c4i9uw100uz5z0no39fg' version='10.4'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='economic2015' name='excel-direct.0b3dh9h19wr5w116e5pa2165nryf'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='/Users/jpw/Desktop/OneDrive/OneDrive - University of Southampton/CourseWork/Summester1/DataVisulisation/course work/DataViz/tableau/economic2015.xlsx' interpretationMode='0' password='' server='' validate='no' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.0b3dh9h19wr5w116e5pa2165nryf' name='proc' table='[proc$]' type='table'>
+          <columns gridOrigin='A1:C21:no:A1:C21:0' header='yes' outcome='6'>
+            <column datatype='string' name='Economic' ordinal='0' />
+            <column datatype='string' name='Weight Category' ordinal='1' />
+            <column datatype='integer' name='Count' ordinal='2' />
+          </columns>
+        </relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Economic</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Economic]</local-name>
+            <parent-name>[proc]</parent-name>
+            <remote-alias>Economic</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RGB_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Weight Category</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Weight Category]</local-name>
+            <parent-name>[proc]</parent-name>
+            <remote-alias>Weight Category</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RGB_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Count]</local-name>
+            <parent-name>[proc]</parent-name>
+            <remote-alias>Count</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[proc]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>1</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:C21:no:A1:C21:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Percent' datatype='real' name='[Calculation_2674856730298748933]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Count]/([Count])' />
+      </column>
+      <column datatype='string' name='[Economic]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;q1&quot;' value='33% Most Deprived' />
+          <alias key='&quot;q2&quot;' value='23%' />
+          <alias key='&quot;q3&quot;' value='18%' />
+          <alias key='&quot;q4&quot;' value='16%' />
+          <alias key='&quot;q5&quot;' value='10% Least Deprived' />
+        </aliases>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='string' name='[Weight Category]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;Healthy Weight&quot;' value='85% Healthy Weight' />
+          <alias key='&quot;Obes &amp; Servearly Obes&quot;' value='6%  Obese &amp; Servearly Obese' />
+          <alias key='&quot;Over Weight&quot;' value='9%  Over Weight' />
+        </aliases>
+      </column>
+      <column-instance column='[Economic]' derivation='None' name='[none:Economic:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Weight Category]' derivation='None' name='[none:Weight Category:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='/Users/jpw/Desktop/OneDrive/OneDrive - University of Southampton/CourseWork/Summester1/DataVisulisation/course work/DataViz/tableau/proc (economic2015).tde' schema='Extract' tablename='Extract' update-time=''>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Calculation_2674856730298748933]' formula='[Count]/([Count])' />
+            <calculation column='[Number of Records]' formula='1' />
+          </calculations>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Count</remote-name>
+              <remote-type>2</remote-type>
+              <local-name>[Count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Count</remote-alias>
+              <ordinal>0</ordinal>
+              <family>proc</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>53564.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>2678.1999999999998</statistic>
+                <statistic aggregation='Min' datatype='integer'>28</statistic>
+                <statistic aggregation='Max' datatype='integer'>10391</statistic>
+                <statistic aggregation='Stdev' datatype='real'>3825.6588919942583</statistic>
+                <statistic aggregation='StdevP' datatype='real'>3728.7910453657764</statistic>
+                <statistic aggregation='Var' datatype='real'>14635665.957894737</statistic>
+                <statistic aggregation='VarP' datatype='real'>13903882.66</statistic>
+                <statistic aggregation='Count' datatype='integer'>20</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>421532758.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Economic</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Economic]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Economic</remote-alias>
+              <ordinal>1</ordinal>
+              <family>proc</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;q1&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;q5&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>20</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of Records</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[Number of Records]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of Records</remote-alias>
+              <ordinal>2</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>20.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='integer'>1</statistic>
+                <statistic aggregation='Max' datatype='integer'>1</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>20</statistic>
+                <statistic aggregation='Median' datatype='integer'>1</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>20.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Weight Category</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Weight Category]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Weight Category</remote-alias>
+              <ordinal>3</ordinal>
+              <family>proc</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;Healthy Weight&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Under Weight&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>20</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;Over Weight&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Calculation_2674856730298748933</remote-name>
+              <remote-type>4</remote-type>
+              <local-name>[Calculation_2674856730298748933]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Calculation_2674856730298748933</remote-alias>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>20.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='real'>1.0</statistic>
+                <statistic aggregation='Max' datatype='real'>1.0</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>20</statistic>
+                <statistic aggregation='Median' datatype='real'>1.0</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>20.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;float&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.481739' measure-ordering='alphabetic' measure-percentage='0.518261' show-aliased-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:hw:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:uw:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:ow:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:O and OS:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Number of Records:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Economic:nk]' palette='miller_stone_10_0' type='palette'>
+            <map to='#4f6980'>
+              <bucket>&quot;q1&quot;</bucket>
+            </map>
+            <map to='#638b66'>
+              <bucket>&quot;q4&quot;</bucket>
+            </map>
+            <map to='#849db1'>
+              <bucket>&quot;q2&quot;</bucket>
+            </map>
+            <map to='#a2ceaa'>
+              <bucket>&quot;q3&quot;</bucket>
+            </map>
+            <map to='#bfbb60'>
+              <bucket>&quot;q5&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Weight Category:nk]' type='palette'>
+            <map to='#00ab2a'>
+              <bucket>&quot;Healthy Weight&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Under Weight&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Obes &amp; Servearly Obes&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Over Weight&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <date-options start-of-week='monday' />
+    </datasource>
+    <datasource caption='Sheet1 (Overall_Trend)' inline='true' name='federated.00nymka0bykw0v1dj4mov0uih3sr' version='10.4'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Overall_Trend' name='excel-direct.0akixao1r4k8oi1aq7j8j116zwdj'>
+            <connection class='excel-direct' cleaning='yes' compat='no' dataRefreshTime='' filename='/Users/jpw/Desktop/OneDrive/OneDrive - University of Southampton/CourseWork/Summester1/DataVisulisation/course work/DataViz/tableau/Overall_Trend.xlsx' interpretationMode='1' password='' server='' validate='no' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.0akixao1r4k8oi1aq7j8j116zwdj' name='Sheet1' table='[Sheet1$]' type='table'>
+          <columns gridOrigin='A1:K11:no:A1:K11:1' header='yes' lost='0' outcome='1' processed='100'>
+            <column datatype='string' name='year' ordinal='0' />
+            <column datatype='real' name='O ans os' ordinal='1' />
+            <column datatype='real' name='95% low' ordinal='2' />
+            <column datatype='real' name='95% high' ordinal='3' />
+            <column datatype='real' name='Boys O OS' ordinal='4' />
+            <column datatype='real' name='Girls O OS' ordinal='5' />
+            <column datatype='real' name='SIMD Quintile 1 (Most Deprived)' ordinal='6' />
+            <column datatype='real' name='SIMD Quintile 2' ordinal='7' />
+            <column datatype='real' name='SIMD Quintile 3' ordinal='8' />
+            <column datatype='real' name='SIMD Quintile 4' ordinal='9' />
+            <column datatype='real' name='SIMD Quintile 5 (Least Deprived)' ordinal='10' />
+          </columns>
+        </relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RGB_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>O ans os</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[O ans os]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>O ans os</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>95% low</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[95% low]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>95% low</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>95% high</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[95% high]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>95% high</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Boys O OS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Boys O OS]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>Boys O OS</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Girls O OS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Girls O OS]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>Girls O OS</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SIMD Quintile 1 (Most Deprived)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SIMD Quintile 1 (Most Deprived)]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>SIMD Quintile 1 (Most Deprived)</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SIMD Quintile 2</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SIMD Quintile 2]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>SIMD Quintile 2</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SIMD Quintile 3</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SIMD Quintile 3]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>SIMD Quintile 3</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SIMD Quintile 4</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SIMD Quintile 4]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>SIMD Quintile 4</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SIMD Quintile 5 (Least Deprived)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SIMD Quintile 5 (Least Deprived)]</local-name>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias>SIMD Quintile 5 (Least Deprived)</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Sheet1]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:K11:no:A1:K11:1&quot;</attribute>
+              <attribute datatype='integer' name='lost'>0</attribute>
+              <attribute datatype='integer' name='outcome'>1</attribute>
+              <attribute datatype='integer' name='processed'>100</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='95% High' datatype='real' name='[95% high]' role='measure' type='quantitative' />
+      <column caption='95% Low' datatype='real' name='[95% low]' role='measure' type='quantitative' />
+      <column datatype='real' name='[Boys O OS]' role='measure' type='quantitative' />
+      <column caption='School Year of Entry' datatype='date' name='[Calculation_2674856729643864065]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+      </column>
+      <column caption='Band Width' datatype='real' name='[Calculation_2674856729654812674]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[95% high]-[95% low]' />
+      </column>
+      <column datatype='real' name='[Girls O OS]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Obes &amp; Servearly Obes Combined' datatype='real' name='[O ans os]' role='measure' type='quantitative' />
+      <column datatype='real' name='[SIMD Quintile 1 (Most Deprived)]' role='measure' type='quantitative' />
+      <column datatype='real' name='[SIMD Quintile 2]' role='measure' type='quantitative' />
+      <column datatype='real' name='[SIMD Quintile 3]' role='measure' type='quantitative' />
+      <column datatype='real' name='[SIMD Quintile 4]' role='measure' type='quantitative' />
+      <column datatype='real' name='[SIMD Quintile 5 (Least Deprived)]' role='measure' type='quantitative' />
+      <column caption='Year' datatype='string' name='[year]' role='dimension' type='nominal' />
+      <column-instance column='[SIMD Quintile 1 (Most Deprived)]' derivation='Avg' name='[avg:SIMD Quintile 1 (Most Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 2]' derivation='Avg' name='[avg:SIMD Quintile 2:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 3]' derivation='Avg' name='[avg:SIMD Quintile 3:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 4]' derivation='Avg' name='[avg:SIMD Quintile 4:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 5 (Least Deprived)]' derivation='Avg' name='[avg:SIMD Quintile 5 (Least Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 1 (Most Deprived)]' derivation='Count' name='[cnt:SIMD Quintile 1 (Most Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 2]' derivation='Count' name='[cnt:SIMD Quintile 2:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 3]' derivation='Count' name='[cnt:SIMD Quintile 3:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 4]' derivation='Count' name='[cnt:SIMD Quintile 4:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 5 (Least Deprived)]' derivation='Count' name='[cnt:SIMD Quintile 5 (Least Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 1 (Most Deprived)]' derivation='Median' name='[med:SIMD Quintile 1 (Most Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 2]' derivation='Median' name='[med:SIMD Quintile 2:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 3]' derivation='Median' name='[med:SIMD Quintile 3:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 4]' derivation='Median' name='[med:SIMD Quintile 4:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 5 (Least Deprived)]' derivation='Median' name='[med:SIMD Quintile 5 (Least Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[95% high]' derivation='Sum' name='[sum:95% high:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[95% low]' derivation='Sum' name='[sum:95% low:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Boys O OS]' derivation='Sum' name='[sum:Boys O OS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2674856729654812674]' derivation='Sum' name='[sum:Calculation_2674856729654812674:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Girls O OS]' derivation='Sum' name='[sum:Girls O OS:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[O ans os]' derivation='Sum' name='[sum:O ans os:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 1 (Most Deprived)]' derivation='Sum' name='[sum:SIMD Quintile 1 (Most Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 2]' derivation='Sum' name='[sum:SIMD Quintile 2:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 3]' derivation='Sum' name='[sum:SIMD Quintile 3:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 4]' derivation='Sum' name='[sum:SIMD Quintile 4:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[SIMD Quintile 5 (Least Deprived)]' derivation='Sum' name='[sum:SIMD Quintile 5 (Least Deprived):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2674856729643864065]' derivation='Year' name='[yr:Calculation_2674856729643864065:ok]' pivot='key' type='ordinal' />
+      <extract count='-1' enabled='false' units='records'>
+        <connection class='dataengine' dbname='/Users/jpw/Desktop/OneDrive/OneDrive - University of Southampton/CourseWork/Summester1/DataVisulisation/course work/DataViz/tableau/Sheet1 (Overall_Trend).tde' schema='Extract' tablename='Extract' update-time=''>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Calculation_2674856729643864065]' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            <calculation column='[Calculation_2674856729654812674]' formula='[95% high]-[95% low]' />
+            <calculation column='[Number of Records]' formula='1' />
+          </calculations>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>95% high</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[95% high]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>95% high</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>60.899999999999999</statistic>
+                <statistic aggregation='Avg' datatype='real'>6.0899999999999999</statistic>
+                <statistic aggregation='Min' datatype='real'>5.7000000000000002</statistic>
+                <statistic aggregation='Max' datatype='real'>6.4000000000000004</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.24244128727956449</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.22999999999998932</statistic>
+                <statistic aggregation='Var' datatype='real'>0.058777777777772322</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.05289999999999509</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>371.40999999999997</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>95% low</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[95% low]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>95% low</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>59.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>5.9000000000000004</statistic>
+                <statistic aggregation='Min' datatype='real'>5.5</statistic>
+                <statistic aggregation='Max' datatype='real'>6.2999999999999998</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.2748737083745052</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.26076809620810071</statistic>
+                <statistic aggregation='Var' datatype='real'>0.075555555555552517</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.067999999999997271</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>348.77999999999997</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Boys O OS</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Boys O OS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Boys O OS</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>63.293513974492122</statistic>
+                <statistic aggregation='Avg' datatype='real'>6.3293513974492122</statistic>
+                <statistic aggregation='Min' datatype='real'>6.018544854656124</statistic>
+                <statistic aggregation='Max' datatype='real'>6.5959087737338873</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.20235181606287692</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.19196778822904101</statistic>
+                <statistic aggregation='Var' datatype='real'>0.040946257463944376</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.036851631717549932</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>400.97540744109847</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Calculation_2674856729654812674</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Calculation_2674856729654812674]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Calculation_2674856729654812674</remote-alias>
+              <ordinal>3</ordinal>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>1.9000000000000012</statistic>
+                <statistic aggregation='Avg' datatype='real'>0.19000000000000011</statistic>
+                <statistic aggregation='Min' datatype='real'>0.099999999999999645</statistic>
+                <statistic aggregation='Max' datatype='real'>0.39999999999999947</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.11005049346146113</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.10440306508910545</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0121111111111111</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.01089999999999999</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>0.47000000000000036</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Girls O OS</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Girls O OS]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Girls O OS</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>56.670959168307114</statistic>
+                <statistic aggregation='Avg' datatype='real'>5.6670959168307116</statistic>
+                <statistic aggregation='Min' datatype='real'>5.1921141436267835</statistic>
+                <statistic aggregation='Max' datatype='real'>6.1695040710584754</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.33656125270034765</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.31929003920777815</statistic>
+                <statistic aggregation='Var' datatype='real'>0.11327347681922725</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.10194612913730453</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>322.17922259696627</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of Records</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[Number of Records]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of Records</remote-alias>
+              <ordinal>5</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>10.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='integer'>1</statistic>
+                <statistic aggregation='Max' datatype='integer'>1</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='Median' datatype='integer'>1</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>10.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>O ans os</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[O ans os]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>O ans os</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>60.100000000000001</statistic>
+                <statistic aggregation='Avg' datatype='real'>6.0099999999999998</statistic>
+                <statistic aggregation='Min' datatype='real'>5.5999999999999996</statistic>
+                <statistic aggregation='Max' datatype='real'>6.4000000000000004</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.26012817353500595</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.24677925358504585</statistic>
+                <statistic aggregation='Var' datatype='real'>0.067666666666658173</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.060899999999992363</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>361.80999999999995</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SIMD Quintile 1 (Most Deprived)</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[SIMD Quintile 1 (Most Deprived)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SIMD Quintile 1 (Most Deprived)</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>77.44477613649083</statistic>
+                <statistic aggregation='Avg' datatype='real'>7.7444776136490834</statistic>
+                <statistic aggregation='Min' datatype='real'>7.0577984316003484</statistic>
+                <statistic aggregation='Max' datatype='real'>8.6783003364895528</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.50392016324599531</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.47806064242236407</statistic>
+                <statistic aggregation='Var' datatype='real'>0.25393553092587051</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.22854197783328345</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>602.05475486145076</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SIMD Quintile 2</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[SIMD Quintile 2]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SIMD Quintile 2</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>69.732868381445641</statistic>
+                <statistic aggregation='Avg' datatype='real'>6.9732868381445643</statistic>
+                <statistic aggregation='Min' datatype='real'>6.3122476446837146</statistic>
+                <statistic aggregation='Max' datatype='real'>7.5860175695461205</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.48198813863311329</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.45725409697969022</statistic>
+                <statistic aggregation='Var' datatype='real'>0.23231256578301326</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.20908130920471193</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>488.35810636244923</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SIMD Quintile 3</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[SIMD Quintile 3]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SIMD Quintile 3</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>59.364304515336578</statistic>
+                <statistic aggregation='Avg' datatype='real'>5.9364304515336581</statistic>
+                <statistic aggregation='Min' datatype='real'>5.562624977276859</statistic>
+                <statistic aggregation='Max' datatype='real'>6.4195896757114497</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.24090552052773281</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.2285430437328253</statistic>
+                <statistic aggregation='Var' datatype='real'>0.058035469820737894</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.052231922838664104</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>352.93438428734771</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SIMD Quintile 4</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[SIMD Quintile 4]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SIMD Quintile 4</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>49.919471505588042</statistic>
+                <statistic aggregation='Avg' datatype='real'>4.9919471505588042</statistic>
+                <statistic aggregation='Min' datatype='real'>4.6697517879680266</statistic>
+                <statistic aggregation='Max' datatype='real'>5.3139164818208124</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.22242304623259174</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.21100902906237703</statistic>
+                <statistic aggregation='Var' datatype='real'>0.049472011495385639</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.044524810345847071</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>249.64061164318014</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SIMD Quintile 5 (Least Deprived)</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[SIMD Quintile 5 (Least Deprived)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SIMD Quintile 5 (Least Deprived)</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Sheet1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>39.836175141361053</statistic>
+                <statistic aggregation='Avg' datatype='real'>3.9836175141361054</statistic>
+                <statistic aggregation='Min' datatype='real'>3.5770855332629359</statistic>
+                <statistic aggregation='Max' datatype='real'>4.6596521365686066</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.32906941382901189</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.31218265679885637</statistic>
+                <statistic aggregation='Var' datatype='real'>0.10828667911776949</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.09745801120599254</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>159.66666510137915</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>year</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Sheet1</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;06/07&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;15/16&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;11/12&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Calculation_2674856729643864065</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Calculation_2674856729643864065]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Calculation_2674856729643864065</remote-alias>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='date'>#2006-10-01#</statistic>
+                <statistic aggregation='Max' datatype='date'>#2015-10-01#</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='Median' datatype='date'>#2011-10-01#</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.316522' measure-ordering='alphabetic' measure-percentage='0.683478' show-hidden-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[yr:Calculation_2674856729643864065:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>2006</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>2010</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>2009</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>2014</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>2012</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>2015</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>2008</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>2011</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2007</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>2013</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' palette='tableau10_10_0' type='palette'>
+            <map to='#000000'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[avg:SIMD Quintile 1 (Most Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[cnt:SIMD Quintile 1 (Most Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[med:SIMD Quintile 1 (Most Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[avg:SIMD Quintile 5 (Least Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[cnt:SIMD Quintile 5 (Least Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[med:SIMD Quintile 5 (Least Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 5 (Least Deprived):qk]&quot;</bucket>
+            </map>
+            <map to='#767f8b'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Boys O OS:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[avg:SIMD Quintile 4:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[cnt:SIMD Quintile 4:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[med:SIMD Quintile 4:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 4:qk]&quot;</bucket>
+            </map>
+            <map to='#b3b7b8'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Girls O OS:qk]&quot;</bucket>
+            </map>
+            <map to='#d3d3d3'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Calculation_2674856729654812674:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[avg:SIMD Quintile 3:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[cnt:SIMD Quintile 3:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[med:SIMD Quintile 3:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:95\% high:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 3:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[avg:SIMD Quintile 2:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[cnt:SIMD Quintile 2:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[med:SIMD Quintile 2:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 2:qk]&quot;</bucket>
+            </map>
+            <map to='#ffffff'>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:95\% low:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <date-options start-of-week='monday' />
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='year' />
+        <field-sort-custom-order field='Calculation_2674856729643864065' />
+        <field-sort-custom-order field='O ans os' />
+        <field-sort-custom-order field='95% low' />
+        <field-sort-custom-order field='95% high' />
+        <field-sort-custom-order field='Calculation_2674856729654812674' />
+      </field-sort-info>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Highlight 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='2015 by Economic Background' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Weight Category' />
+        <param name='target' value='2015 by Economic Background' />
+      </command>
+    </action>
+    <action caption='Highlight 2 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Economic Trend' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Measure Names' />
+        <param name='target' value='Economic Trend' />
+      </command>
+    </action>
+    <action caption='Highlight 3 (generated)' name='[Action3]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='2015WC' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Weight Category' />
+        <param name='target' value='2015WC' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='BvG'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (Overall_Trend)' name='federated.00nymka0bykw0v1dj4mov0uih3sr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00nymka0bykw0v1dj4mov0uih3sr'>
+            <column datatype='real' name='[Boys O OS]' role='measure' type='quantitative' />
+            <column caption='School Year of Entry' datatype='date' name='[Calculation_2674856729643864065]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            </column>
+            <column datatype='real' name='[Girls O OS]' role='measure' type='quantitative' />
+            <column-instance column='[Boys O OS]' derivation='Sum' name='[sum:Boys O OS:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Girls O OS]' derivation='Sum' name='[sum:Girls O OS:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='string' name='[year]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2674856729643864065]' derivation='Year' name='[yr:Calculation_2674856729643864065:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Girls O OS:qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Girls O OS:qk]' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Boys O OS:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Girls O OS:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+          </pane>
+        </panes>
+        <rows>([federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Boys O OS:qk] + [federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Girls O OS:qk])</rows>
+        <cols>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='EcoCat'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Obes &amp; Severarly Obes  in 2015</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='proc (economic2015)' name='federated.1alhzl11c4i9uw100uz5z0no39fg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1alhzl11c4i9uw100uz5z0no39fg'>
+            <column datatype='integer' name='[Count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Economic]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;q1&quot;' value='33% Most Deprived' />
+                <alias key='&quot;q2&quot;' value='23%' />
+                <alias key='&quot;q3&quot;' value='18%' />
+                <alias key='&quot;q4&quot;' value='16%' />
+                <alias key='&quot;q5&quot;' value='10% Least Deprived' />
+              </aliases>
+            </column>
+            <column datatype='string' name='[Weight Category]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;Healthy Weight&quot;' value='85% Healthy Weight' />
+                <alias key='&quot;Obes &amp; Servearly Obes&quot;' value='6%  Obese &amp; Servearly Obese' />
+                <alias key='&quot;Over Weight&quot;' value='9%  Over Weight' />
+              </aliases>
+            </column>
+            <column-instance column='[Economic]' derivation='None' name='[none:Economic:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Weight Category]' derivation='None' name='[none:Weight Category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Count]' derivation='Sum' name='[pcto:sum:Count:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <sort class='manual' column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Economic:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;q1&quot;</bucket>
+              <bucket>&quot;q2&quot;</bucket>
+              <bucket>&quot;q3&quot;</bucket>
+              <bucket>&quot;q4&quot;</bucket>
+              <bucket>&quot;q5&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </sort>
+          <filter class='categorical' column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]'>
+            <groupfilter function='member' level='[none:Weight Category:nk]' member='&quot;Obes &amp; Servearly Obes&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Economic:nk]' value='Economic Background'>
+              <formatted-text>
+                <run>Economic Background</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Economic:nk]' />
+              <wedge-size column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[pcto:sum:Count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1.813093900680542' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Overall'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Scotish National Primary 1 Obesity</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (Overall_Trend)' name='federated.00nymka0bykw0v1dj4mov0uih3sr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00nymka0bykw0v1dj4mov0uih3sr'>
+            <column caption='95% High' datatype='real' name='[95% high]' role='measure' type='quantitative' />
+            <column caption='95% Low' datatype='real' name='[95% low]' role='measure' type='quantitative' />
+            <column caption='School Year of Entry' datatype='date' name='[Calculation_2674856729643864065]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            </column>
+            <column caption='Band Width' datatype='real' name='[Calculation_2674856729654812674]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[95% high]-[95% low]' />
+            </column>
+            <column caption='Obes &amp; Servearly Obes Combined' datatype='real' name='[O ans os]' role='measure' type='quantitative' />
+            <column-instance column='[95% low]' derivation='Sum' name='[sum:95% low:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2674856729654812674]' derivation='Sum' name='[sum:Calculation_2674856729654812674:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[O ans os]' derivation='Sum' name='[sum:O ans os:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2674856729643864065]' derivation='Year-Trunc' name='[tyr:Calculation_2674856729643864065:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='string' name='[year]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Calculation_2674856729654812674:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:95\% low:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:Calculation_2674856729654812674:qk]&quot;</bucket>
+              <bucket>&quot;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:95\% low:qk]&quot;</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' field-type='quantitative' max='6.7393659942363113' min='0.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' scope='rows' value='true' />
+            <format attr='title' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' scope='rows' value='Percentage of Obes and Servearly Obes Combined' />
+            <format attr='title' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]' scope='cols' value='School Year of Entry' />
+            <format attr='subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]' scope='cols' value='true' />
+            <encoding attr='space' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[Multiple Values]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[Multiple Values]' scope='rows' value='false' />
+            <format attr='width' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' value='88' />
+            <format attr='width' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[Multiple Values]' value='88' />
+            <format attr='render-fold-reversed' value='true' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='body-type' id='annotation_0' value='none' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Obes &amp; Servearly Obes Combined:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Year of School Year of Entry:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-disallow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <lod column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]' />
+              <lod column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Obes &amp; Servearly Obes Combined:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Year of School Year of Entry:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-disallow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[Multiple Values]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip show-buttons='false'>
+              <formatted-text>
+                <run fontcolor='#787878'>Obes &amp; Servearly Obes Combined:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Year of School Year of Entry:&#9;</run>
+                <run bold='true'>&lt;[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]&gt;</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk] + [federated.00nymka0bykw0v1dj4mov0uih3sr].[Multiple Values])</rows>
+        <cols>[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]</cols>
+        <annotations>
+          <annotation class='area' id='0' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run>The last decade has seen a stabilisation in obesity levels in Scottish Primary 1 childeren</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord axis-value='#2007-01-31 06:25:36.705#'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]</axis>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='3.5628495383542282'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord axis-value='#2013-01-13 05:46:28.583#'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[tyr:Calculation_2674856729643864065:qk]</axis>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='2.0926375300574533'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:O ans os:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+        </annotations>
+      </table>
+    </worksheet>
+    <worksheet name='RvP'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Economic Gap Widens</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet1 (Overall_Trend)' name='federated.00nymka0bykw0v1dj4mov0uih3sr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00nymka0bykw0v1dj4mov0uih3sr'>
+            <column caption='School Year of Entry' datatype='date' name='[Calculation_2674856729643864065]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            </column>
+            <column datatype='real' name='[SIMD Quintile 1 (Most Deprived)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[SIMD Quintile 5 (Least Deprived)]' role='measure' type='quantitative' />
+            <column-instance column='[SIMD Quintile 1 (Most Deprived)]' derivation='Sum' name='[sum:SIMD Quintile 1 (Most Deprived):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[SIMD Quintile 5 (Least Deprived)]' derivation='Sum' name='[sum:SIMD Quintile 5 (Least Deprived):qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='string' name='[year]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2674856729643864065]' derivation='Year' name='[yr:Calculation_2674856729643864065:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 5 (Least Deprived):qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='display' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 5 (Least Deprived):qk]' scope='rows' value='false' />
+            <format attr='title' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]' scope='rows' value='Percentage of Obes &amp; Servearly Obes Primary 1 Childeren' />
+            <format attr='subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]' scope='rows' value='true' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='legend-title'>
+            <format attr='text-align' value='left' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' value='Economic Background' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='body-type' id='annotation_2' value='none' />
+            <format attr='body-type' id='annotation_3' value='none' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='off' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]'>
+            <view>
+              <breakdown value='off' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 5 (Least Deprived):qk]'>
+            <view>
+              <breakdown value='off' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk] + [federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 5 (Least Deprived):qk])</rows>
+        <cols>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</cols>
+        <annotations>
+          <annotation class='area' id='2' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run fontcolor='#ffffff'>Least Deprived Primary 1 has </run>
+              <run bold='true' fontcolor='#ffffff'>19% Decrease</run>
+              <run fontcolor='#ffffff'> in the proportion of Obese and Servearly Obese Childeren from 2006 to 2015</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.316667'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>2007</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='2.9750703112499171'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.55'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>2014</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='1.275030133392822'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+          <annotation class='area' id='3' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run fontcolor='#ffffff'>Most Deprived Primary 1 has </run>
+              <run bold='true' fontcolor='#ffffff'>12% Increase</run>
+              <run fontcolor='#ffffff'> in the proportion of Obese and Servearly Obese Childeren from 2006 to 2015</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.583333'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>2007</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='6.681157898978384'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.516667'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.00nymka0bykw0v1dj4mov0uih3sr].[yr:Calculation_2674856729643864065:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>2014</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='5.5421309798141305'>
+                  <node-reference>
+                    <axis>[federated.00nymka0bykw0v1dj4mov0uih3sr].[sum:SIMD Quintile 1 (Most Deprived):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+        </annotations>
+      </table>
+    </worksheet>
+    <worksheet name='WeightCat'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Weight Categories in 2015</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='proc (economic2015)' name='federated.1alhzl11c4i9uw100uz5z0no39fg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1alhzl11c4i9uw100uz5z0no39fg'>
+            <column datatype='integer' name='[Count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Weight Category]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;Healthy Weight&quot;' value='85% Healthy Weight' />
+                <alias key='&quot;Obes &amp; Servearly Obes&quot;' value='6%  Obese &amp; Servearly Obese' />
+                <alias key='&quot;Over Weight&quot;' value='9%  Over Weight' />
+              </aliases>
+            </column>
+            <column-instance column='[Weight Category]' derivation='None' name='[none:Weight Category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Count]' derivation='Sum' name='[pcto:sum:Count:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Count]' derivation='Sum' name='[sum:Count:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Weight Category:nk]' />
+              <groupfilter function='member' level='[none:Weight Category:nk]' member='&quot;Under Weight&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Under Weight&quot;</bucket>
+              <bucket>&quot;Healthy Weight&quot;</bucket>
+              <bucket>&quot;Over Weight&quot;</bucket>
+              <bucket>&quot;Obes &amp; Servearly Obes&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Count:qk]' value='N' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='background-color' data-class='total' value='#00000000' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]' value='2015 Weight Categories' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]' />
+              <wedge-size column='[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='2' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+        <mark-labels>
+          <mark-label id='0'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]</field>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Count:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Obes &amp; Servearly Obes&quot;</value>
+                <value>3392</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-4' y='-16' />
+          </mark-label>
+          <mark-label id='1'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]</field>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Count:qk]</field>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[pcto:sum:Count:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Healthy Weight&quot;</value>
+                <value>45383</value>
+                <value>0.85029884023757329</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='23' y='44' />
+          </mark-label>
+          <mark-label id='2'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]</field>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[sum:Count:qk]</field>
+                  <field>[federated.1alhzl11c4i9uw100uz5z0no39fg].[pcto:sum:Count:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Over Weight&quot;</value>
+                <value>4598</value>
+                <value>0.086148427107338915</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-11' y='-12' />
+          </mark-label>
+        </mark-labels>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='2015 by Economic Background'>
+      <style />
+      <size maxheight='150' maxwidth='310' minheight='150' minwidth='310' sizing-mode='fixed' />
+      <zones use-insets='false'>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='89334' id='5' param='horz' type='layout-flow' w='47420' x='49999' y='5333'>
+            <zone fixed-size='1053' h='89334' id='3' is-fixed='true' type='layout-basic' w='47420' x='49999' y='5333'>
+              <zone h='89334' id='8' name='EcoCat' show-title='false' w='47420' x='49999' y='5333'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='89334' id='9' leg-item-order='reversed' name='EcoCat' pane-specification-id='0' param='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Economic:nk]' show-title='false' type='color' w='47418' x='2581' y='5333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='2015WC'>
+      <style />
+      <size maxheight='300' maxwidth='220' minheight='300' minwidth='220' sizing-mode='fixed' />
+      <zones use-insets='false'>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='69666' id='1' name='WeightCat' show-title='false' w='92728' x='3636' y='2667'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='25000' id='6' name='WeightCat' pane-specification-id='0' param='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]' show-title='false' type='color' w='92728' x='3636' y='72333'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Economic Trend'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones use-insets='false'>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97740' id='5' param='horz' type='layout-flow' w='98504' x='748' y='1130'>
+            <zone h='97740' id='3' type='layout-basic' w='98504' x='748' y='1130'>
+              <zone h='97740' id='1' name='RvP' show-title='false' w='98504' x='748' y='1130'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone fixed-size='40' h='19492' id='6' is-fixed='true' name='RvP' pane-specification-id='3' param='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' type='color' w='23106' x='12722' y='2825'>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='4' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='OverallTrend'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones use-insets='false'>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97740' id='1' name='Overall' show-title='false' w='98504' x='748' y='1130'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='51'>
+    <window class='worksheet' maximized='true' name='Overall'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='dashboard' name='OverallTrend'>
+      <viewpoints>
+        <viewpoint name='Overall'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='worksheet' name='BvG'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' name='RvP'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='3' param='[federated.00nymka0bykw0v1dj4mov0uih3sr].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' name='WeightCat'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Weight Category:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' name='EcoCat'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1alhzl11c4i9uw100uz5z0no39fg].[none:Economic:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='dashboard' name='2015 by Economic Background'>
+      <viewpoints>
+        <viewpoint name='EcoCat'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='2' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' name='Economic Trend'>
+      <viewpoints>
+        <viewpoint name='RvP'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='dashboard' name='2015WC'>
+      <viewpoints>
+        <viewpoint name='WeightCat'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='4' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+  </windows>
+</workbook>
