@@ -1,0 +1,857 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10400.17.1206.1554                               -->
+<workbook source-build='10.4.2 (10400.17.1206.1554)' source-platform='mac' version='10.4' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location id='COMP6234_jpw1n17_CW_V2_0' path='/workbooks' revision='3.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+    <color-palette custom='true' name='My Custom Orange' type='ordered-sequential'>
+      <color>#7b3014</color>
+      <color>#a33202</color>
+      <color>#d74401</color>
+      <color>#f06511</color>
+      <color>#fd8938</color>
+      <color>#fdab67</color>
+      <color>#ffffff</color>
+    </color-palette>
+  </preferences>
+  <datasources>
+    <datasource caption='Scotish_Primary1_BMI_T' inline='true' name='federated.1b3c3bd11vfjgn17v10w20qycfwa' version='10.4'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Scotish_Primary1_BMI_T' name='textscan.0xnbt7814m2jzv18x434z0ctook4'>
+            <connection class='textscan' directory='/Users/jpw/Desktop/OneDrive/OneDrive - University of Southampton/CourseWork/Summester1/DataVisulisation/course work/DataViz/tableau' filename='Scotish_Primary1_BMI_T.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0xnbt7814m2jzv18x434z0ctook4' name='Scotish_Primary1_BMI_T.csv' table='[Scotish_Primary1_BMI_T#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+            <column datatype='string' name='region' ordinal='0' />
+            <column datatype='string' name='year' ordinal='1' />
+            <column datatype='integer' name='Number of children measured' ordinal='2' />
+            <column datatype='real' name='Underweight (clinical)' ordinal='3' />
+            <column datatype='real' name='Healthy weight (clinical)' ordinal='4' />
+            <column datatype='real' name='Overweight (clinical)' ordinal='5' />
+            <column datatype='real' name='Obese (clinical)' ordinal='6' />
+            <column datatype='real' name='Severely obese (clinical)' ordinal='7' />
+            <column datatype='real' name='Overweight, Obese and severely obese combined (clinical) ' ordinal='8' />
+            <column datatype='real' name='Obese and severely obese combined (clinical) ' ordinal='9' />
+          </columns>
+        </relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[region]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>region</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Number of children measured</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Number of children measured]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Number of children measured</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Underweight (clinical)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Underweight (clinical)]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Underweight (clinical)</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Healthy weight (clinical)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Healthy weight (clinical)]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Healthy weight (clinical)</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Overweight (clinical)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Overweight (clinical)]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Overweight (clinical)</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Obese (clinical)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Obese (clinical)]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Obese (clinical)</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Severely obese (clinical)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Severely obese (clinical)]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Severely obese (clinical)</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Overweight, Obese and severely obese combined (clinical) </remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Overweight, Obese and severely obese combined (clinical) ]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Overweight, Obese and severely obese combined (clinical) </remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Obese and severely obese combined (clinical) </remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Obese and severely obese combined (clinical) ]</local-name>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias>Obese and severely obese combined (clinical) </remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Scotish_Primary1_BMI_T.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;£&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='School Entry Year' datatype='date' name='[Calculation_269371575862845440]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+      </column>
+      <column caption='Obese or Severally Obese Percentage' datatype='real' default-format='p0.0%' name='[Calculation_2831708661156810753]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Obese and severely obese combined (clinical) ]/100' />
+      </column>
+      <column caption='Number of OSO' datatype='real' name='[Calculation_51791422664929280]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Number of children measured]*[Obese and severely obese combined (clinical) ]/100' />
+      </column>
+      <column datatype='real' hidden='true' name='[Healthy weight (clinical)]' role='dimension' type='ordinal' />
+      <column datatype='real' default-format='p0.0%' name='[Multiple Values]' role='measure' type='quantitative' />
+      <column datatype='integer' hidden='true' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='integer' name='[Number of children measured]' role='measure' type='quantitative' />
+      <column datatype='real' hidden='true' name='[Obese (clinical)]' role='dimension' type='ordinal' />
+      <column caption='Obese and severely obese combined (clinical)' datatype='real' name='[Obese and severely obese combined (clinical) ]' role='measure' type='quantitative' />
+      <column datatype='real' hidden='true' name='[Overweight (clinical)]' role='dimension' type='ordinal' />
+      <column caption='Overweight, Obese and severely obese combined (clinical)' datatype='real' hidden='true' name='[Overweight, Obese and severely obese combined (clinical) ]' role='dimension' type='ordinal' />
+      <column datatype='real' hidden='true' name='[Severely obese (clinical)]' role='dimension' type='ordinal' />
+      <column datatype='real' hidden='true' name='[Underweight (clinical)]' role='dimension' type='ordinal' />
+      <column caption='Region' datatype='string' name='[region]' role='dimension' semantic-role='[UKLocalAuthorityDistricts].[Name]' type='nominal'>
+        <semantic-values semantic-role='[UKLocalAuthorityDistricts].[Name]'>
+          <semantic-value key='&quot;Argyll &amp; Bute&quot;' value='&quot;Argyll and Bute&quot;' />
+          <semantic-value key='&quot;Dumfries &amp; Galloway&quot;' value='&quot;Dumfries and Galloway&quot;' />
+          <semantic-value key='&quot;Edinburgh, City of &quot;' value='&quot;City of Edinburgh&quot;' />
+          <semantic-value key='&quot;Na h-Eileanan Siar&quot;' value='&quot;Eilean Siar&quot;' />
+          <semantic-value key='&quot;Orkney&quot;' value='&quot;Orkney Islands&quot;' />
+          <semantic-value key='&quot;Perth &amp; Kinross&quot;' value='&quot;Perth and Kinross&quot;' />
+        </semantic-values>
+      </column>
+      <column caption='Year' datatype='string' hidden='true' name='[year]' role='dimension' type='nominal' />
+      <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+      <extract count='-1' enabled='false' units='records'>
+        <connection class='dataengine' dbname='/Users/jpw/Documents/My Tableau Repository/Datasources/Scotish_Primary1_BMI_T.tde' schema='Extract' tablename='Extract' update-time='01/19/2018 09:52:26 AM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Calculation_269371575862845440]' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            <calculation column='[Calculation_2831708661156810753]' formula='[Obese and severely obese combined (clinical) ]/100' />
+          </calculations>
+          <refresh increment-key='' incremental-updates='false'>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='330' timestamp-start='2018-01-19 09:52:26.259' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Obese and severely obese combined (clinical) </remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Obese and severely obese combined (clinical) ]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Obese and severely obese combined (clinical) </remote-alias>
+              <ordinal>0</ordinal>
+              <family>Scotish_Primary1_BMI_T.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>62</approx-count>
+              <contains-null>true</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>1734.600000000002</statistic>
+                <statistic aggregation='Avg' datatype='real'>6.0650349650349717</statistic>
+                <statistic aggregation='Min' datatype='real'>2.3999999999999999</statistic>
+                <statistic aggregation='Max' datatype='real'>11.6</statistic>
+                <statistic aggregation='Stdev' datatype='real'>1.2406992222841873</statistic>
+                <statistic aggregation='StdevP' datatype='real'>1.2385282683510463</statistic>
+                <statistic aggregation='Var' datatype='real'>1.5393345601765873</statistic>
+                <statistic aggregation='VarP' datatype='real'>1.5339522715046412</statistic>
+                <statistic aggregation='Count' datatype='integer'>286</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>10959.120000000001</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>region</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[region]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>region</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Scotish_Primary1_BMI_T.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>33</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;Aberdeen City&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;West Lothian&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>330</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>year</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Scotish_Primary1_BMI_T.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;06/07&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;15/16&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>330</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;11/12&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_GB&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Calculation_269371575862845440</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Calculation_269371575862845440]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Calculation_269371575862845440</remote-alias>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='date'>#2006-10-01#</statistic>
+                <statistic aggregation='Max' datatype='date'>#2015-10-01#</statistic>
+                <statistic aggregation='Count' datatype='integer'>330</statistic>
+                <statistic aggregation='Median' datatype='date'>#2011-10-01#</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Calculation_2831708661156810753</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Calculation_2831708661156810753]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Calculation_2831708661156810753</remote-alias>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>62</approx-count>
+              <contains-null>true</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>17.346</statistic>
+                <statistic aggregation='Avg' datatype='real'>0.060650349650349648</statistic>
+                <statistic aggregation='Min' datatype='real'>0.024</statistic>
+                <statistic aggregation='Max' datatype='real'>0.11599999999999999</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.012406992222842169</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.012385282683510756</statistic>
+                <statistic aggregation='Var' datatype='real'>0.00015393345601766604</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.00015339522715047141</statistic>
+                <statistic aggregation='Count' datatype='integer'>286</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>1.0959119999999998</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.483221' measure-ordering='alphabetic' measure-percentage='0.516779' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:region:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;East Ayrshire&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;South Ayrshire&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Aberdeen City&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Na h-Eileanan Siar&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Argyll &amp; Bute&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Perth &amp; Kinross&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Edinburgh, City of &quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;West Lothian&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;East Dunbartonshire&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;South Lanarkshire&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Clackmannanshire&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Renfrewshire&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Midlothian&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Aberdeenshire&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;North Ayrshire&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Highland&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Dumfries &amp; Galloway&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Scottish Borders&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Falkirk&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Fife&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Inverclyde&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Moray&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;East Lothian&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Stirling&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Dundee City&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Shetland Islands&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;All participating NHS Boards&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;North Lanarkshire&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Glasgow City&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;East Renfrewshire&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;West Dunbartonshire&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Angus&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Orkney&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <date-options start-of-week='monday' />
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='region' />
+        <field-sort-custom-order field='year' />
+        <field-sort-custom-order field='Calculation_269371575862845440' />
+        <field-sort-custom-order field='Number of children measured' />
+        <field-sort-custom-order field='Underweight (clinical)' />
+        <field-sort-custom-order field='Healthy weight (clinical)' />
+        <field-sort-custom-order field='Overweight (clinical)' />
+        <field-sort-custom-order field='Obese (clinical)' />
+        <field-sort-custom-order field='Severely obese (clinical)' />
+        <field-sort-custom-order field='Overweight, Obese and severely obese combined (clinical) ' />
+        <field-sort-custom-order field='Obese and severely obese combined (clinical) ' />
+      </field-sort-info>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Regional Variations</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Scotish_Primary1_BMI_T' name='federated.1b3c3bd11vfjgn17v10w20qycfwa' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1b3c3bd11vfjgn17v10w20qycfwa'>
+            <column caption='School Entry Year' datatype='date' name='[Calculation_269371575862845440]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            </column>
+            <column caption='Obese or Severally Obese Percentage' datatype='real' default-format='p0.0%' name='[Calculation_2831708661156810753]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Obese and severely obese combined (clinical) ]/100' />
+            </column>
+            <column caption='Obese and severely obese combined (clinical)' datatype='real' name='[Obese and severely obese combined (clinical) ]' role='measure' type='quantitative' />
+            <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+            <column caption='Region' datatype='string' name='[region]' role='dimension' semantic-role='[UKLocalAuthorityDistricts].[Name]' type='nominal'>
+              <semantic-values semantic-role='[UKLocalAuthorityDistricts].[Name]'>
+                <semantic-value key='&quot;Argyll &amp; Bute&quot;' value='&quot;Argyll and Bute&quot;' />
+                <semantic-value key='&quot;Dumfries &amp; Galloway&quot;' value='&quot;Dumfries and Galloway&quot;' />
+                <semantic-value key='&quot;Edinburgh, City of &quot;' value='&quot;City of Edinburgh&quot;' />
+                <semantic-value key='&quot;Na h-Eileanan Siar&quot;' value='&quot;Eilean Siar&quot;' />
+                <semantic-value key='&quot;Orkney&quot;' value='&quot;Orkney Islands&quot;' />
+                <semantic-value key='&quot;Perth &amp; Kinross&quot;' value='&quot;Perth and Kinross&quot;' />
+              </semantic-values>
+            </column>
+            <column-instance column='[Calculation_2831708661156810753]' derivation='Sum' name='[sum:Calculation_2831708661156810753:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='string' hidden='true' name='[year]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_269371575862845440]' derivation='Year' name='[yr:Calculation_269371575862845440:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Latitude (generated)]' included-values='non-null' />
+          <filter class='quantitative' column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Longitude (generated)]' included-values='non-null' />
+          <filter class='categorical' column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]'>
+            <groupfilter function='member' level='[yr:Calculation_269371575862845440:ok]' member='2006' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Latitude (generated)]</column>
+            <column>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Longitude (generated)]</column>
+            <column>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Calculation_2831708661156810753:qk]' max='0.11600000000000001' min='0.0' palette='My Custom Orange' reverse='true' type='interpolated' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]' value='false' />
+            <format attr='break-on-special' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]' value='false' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Calculation_2831708661156810753:qk]' value='Percentage of Obese or Servearlly Obese Cobimed&#10;(white =&gt; not surveyed)'>
+              <formatted-text>
+                <run>Percentage of Obese or Servearlly Obese Cobimed&#10;(white =&gt; not surveyed)</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='tab_base' value='true' />
+            <format attr='enabled' id='um_lcover' value='true' />
+            <format attr='enabled' id='tab_coastline' value='false' />
+            <format attr='enabled' id='pp2_line' value='false' />
+            <format attr='enabled' id='light_adm0_bnd' value='false' />
+            <format attr='enabled' id='light_adm0_lbl' value='false' />
+            <format attr='enabled' id='um_adm0_bnd' value='true' />
+            <format attr='enabled' id='um_adm0_lbl' value='true' />
+            <format attr='enabled' id='light_pp2_statebounds' value='false' />
+            <format attr='enabled' id='light_pp2_statelabels' value='false' />
+            <format attr='enabled' id='pp2_adminlabels' value='false' />
+            <format attr='enabled' id='pp2_statebounds' value='true' />
+            <format attr='enabled' id='pp2_statelabels' value='true' />
+            <format attr='enabled' id='countybounds' value='false' />
+            <format attr='enabled' id='countylabels' value='false' />
+            <format attr='enabled' id='zipbounds' value='false' />
+            <format attr='enabled' id='ziplabels' value='false' />
+            <format attr='enabled' id='tab_areabounds' value='false' />
+            <format attr='enabled' id='tab_arealabels' value='false' />
+            <format attr='enabled' id='tab_msabounds' value='false' />
+            <format attr='enabled' id='tab_msalabels' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Multipolygon' />
+            <encodings>
+              <color column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Calculation_2831708661156810753:qk]' />
+              <lod column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]' />
+              <geometry column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Geometry (generated)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Latitude (generated)]</rows>
+        <cols>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[Longitude (generated)]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Scotish_Primary1_BMI_T' name='federated.1b3c3bd11vfjgn17v10w20qycfwa' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1b3c3bd11vfjgn17v10w20qycfwa'>
+            <column caption='School Entry Year' datatype='date' name='[Calculation_269371575862845440]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+            </column>
+            <column datatype='integer' name='[Number of children measured]' role='measure' type='quantitative' />
+            <column caption='Obese and severely obese combined (clinical)' datatype='real' name='[Obese and severely obese combined (clinical) ]' role='measure' type='quantitative' />
+            <column-instance column='[Obese and severely obese combined (clinical) ]' derivation='Avg' name='[avg:Obese and severely obese combined (clinical) :qk]' pivot='key' type='quantitative' />
+            <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+            <column caption='Region' datatype='string' name='[region]' role='dimension' semantic-role='[UKLocalAuthorityDistricts].[Name]' type='nominal'>
+              <semantic-values semantic-role='[UKLocalAuthorityDistricts].[Name]'>
+                <semantic-value key='&quot;Argyll &amp; Bute&quot;' value='&quot;Argyll and Bute&quot;' />
+                <semantic-value key='&quot;Dumfries &amp; Galloway&quot;' value='&quot;Dumfries and Galloway&quot;' />
+                <semantic-value key='&quot;Edinburgh, City of &quot;' value='&quot;City of Edinburgh&quot;' />
+                <semantic-value key='&quot;Na h-Eileanan Siar&quot;' value='&quot;Eilean Siar&quot;' />
+                <semantic-value key='&quot;Orkney&quot;' value='&quot;Orkney Islands&quot;' />
+                <semantic-value key='&quot;Perth &amp; Kinross&quot;' value='&quot;Perth and Kinross&quot;' />
+              </semantic-values>
+            </column>
+            <column-instance column='[Number of children measured]' derivation='Sum' name='[sum:Number of children measured:qk]' pivot='key' type='quantitative' />
+            <column caption='Year' datatype='string' hidden='true' name='[year]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_269371575862845440]' derivation='Year' name='[yr:Calculation_269371575862845440:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:region:nk]' member='&quot;Aberdeen City&quot;' />
+              <groupfilter function='member' level='[none:region:nk]' member='&quot;Aberdeenshire&quot;' />
+              <groupfilter from='&quot;Angus&quot;' function='range' level='[none:region:nk]' to='&quot;West Lothian&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]'>
+            <groupfilter function='member' level='[yr:Calculation_269371575862845440:ok]' member='2015' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]</column>
+            <column>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[avg:Obese and severely obese combined (clinical) :qk]' field-type='quantitative' max='12.0' min='0.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[avg:Obese and severely obese combined (clinical) :qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[avg:Obese and severely obese combined (clinical) :qk]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[none:region:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[avg:Obese and severely obese combined (clinical) :qk]</rows>
+        <cols>[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Number of children measured:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='Scotish_Primary1_BMI_T' name='federated.1b3c3bd11vfjgn17v10w20qycfwa' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1b3c3bd11vfjgn17v10w20qycfwa'>
+        <column caption='School Entry Year' datatype='date' name='[Calculation_269371575862845440]' role='dimension' type='ordinal'>
+          <calculation class='tableau' formula='DATE(DATEADD(&apos;month&apos;, 9, DATEPARSE(&apos;yy&apos;,SPLIT([year], &apos;/&apos;, 1))))' />
+        </column>
+        <column-instance column='[Calculation_269371575862845440]' derivation='Year' name='[yr:Calculation_269371575862845440:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones use-insets='false'>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone fixed-size='48' h='13984' id='7' is-fixed='true' name='Sheet 1' pane-specification-id='0' param='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Calculation_2831708661156810753:qk]' type='color' w='98504' x='748' y='84886'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone fixed-size='160' h='83756' id='4' is-fixed='true' param='vert' type='layout-flow' w='98504' x='748' y='1130'>
+            <zone fixed-size='60' h='9605' id='6' is-fixed='true' mode='slider' name='Sheet 1' param='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]' show-all='false' show-title='false' type='filter' w='98504' x='748' y='1130'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone fixed-size='652' h='74151' id='1' is-fixed='true' name='Sheet 1' show-title='false' w='98504' x='748' y='10735'>
+              <layout-cache minheight='201' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='slider' param='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]' show-all='false' type='filter' />
+            <card pane-specification-id='0' param='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[sum:Calculation_2831708661156810753:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='2' />
+          <geo-search-visibility value='1' />
+          <default-map-tool-selection tool='4' />
+          <map-navigation value='1' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='slider' param='[federated.1b3c3bd11vfjgn17v10w20qycfwa].[yr:Calculation_269371575862845440:ok]' show-all='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+  </windows>
+</workbook>
