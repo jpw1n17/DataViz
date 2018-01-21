@@ -1,41 +1,42 @@
 body {
-    font: 300 36px "Helvetica Neue";
-    height: 640px;
-    margin: 80px 160px 80px 160px;
-    overflow: hidden;
-    position: relative;
-    width: 960px;
+    font: 300 20px "Helvetica Neue";
+    height: 100%;
+    max-height: 100%;
+    width: 95%;
+    max-width: 95%;
+    overflow: auto;
+    padding: 0px;
+    margin: 20px 20px 20px 20px;
+    border: 20px;
 }
 
-a:link,
-a:visited {
-    color: #777;
-    text-decoration: none;
+a:link {
+    color: blue;
 }
+
+
+/* unvisited link */
+
+a:visited {
+    color: darkgray;
+}
+
+
+/* visited link */
 
 a:hover {
-    color: #666;
+    color: lightblue;
 }
 
-blockquote {
-    margin: 0;
+
+/* mouse over link */
+
+a:active {
+    color: red;
 }
 
-blockquote:before {
-    content: "“";
-    position: absolute;
-    left: -.4em;
-}
 
-blockquote:after {
-    content: "”";
-    position: absolute;
-}
-
-body>ul {
-    margin: 0;
-    padding: 0;
-}
+/* selected link */
 
 h1 {
     font-size: 32px;
@@ -59,48 +60,5 @@ h3 {
 }
 
 p {
-    font-size: 20px;
-}
-
-li {
-    font-size: 12px;
-}
-
-.invert {
-    background: #1f1f1f;
-    color: #dcdccc;
-}
-
-.invert h2,
-.invert h3 {
-    color: #7f9f7f;
-}
-
-.string,
-.regexp {
-    color: #f39;
-}
-
-.keyword {
-    color: #00c;
-}
-
-.comment {
-    color: #777;
-    font-style: oblique;
-}
-
-.number {
-    color: #369;
-}
-
-.class,
-.special {
-    color: #1181B8;
-}
-
-body>svg {
-    position: absolute;
-    top: -80px;
-    left: -160px;
+    font-size: 24px;
 }
